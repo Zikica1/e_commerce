@@ -1,6 +1,17 @@
 import type { LucideIcon } from 'lucide-react';
 import { z } from 'zod';
 
+export type ProductInputType = {
+  name: string;
+  category: string;
+  shortDescription: string;
+  description: string;
+  price: number;
+  sizes: string[];
+  colors: string[];
+  images: Record<string, string>;
+};
+
 export type ProductType = {
   _id: string;
   name: string;

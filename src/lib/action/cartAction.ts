@@ -129,7 +129,7 @@ const addToCart = async ({
   }
 };
 
-export const getCart = async (): Promise<CartProductType[] | null> => {
+export const getCart = async (): Promise<CartProductType[]> => {
   try {
     await connectDB();
 
@@ -137,13 +137,13 @@ export const getCart = async (): Promise<CartProductType[] | null> => {
     const cartId = cookieStore.get('cartId')?.value;
 
     if (!cartId) {
-      return null;
+      return [];
     }
 
     const cart = await Cart.findOne({ cartId }).lean();
 
     if (!cart) {
-      return null;
+      return [];
     }
 
     const productIds = cart.items.map((item: CartItem) =>
@@ -173,7 +173,7 @@ export const getCart = async (): Promise<CartProductType[] | null> => {
     return cartItems;
   } catch (error) {
     console.error('Error getting cart:', error);
-    return null;
+    return [];
   }
 };
 

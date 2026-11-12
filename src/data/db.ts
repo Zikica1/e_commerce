@@ -11,9 +11,9 @@ import {
   Headset,
 } from 'lucide-react';
 
-import { ProductsType, CategoriesType, OrderFooTypes } from '../../types';
+import { CategoriesType, OrderFooTypes, ProductInputType } from '../../types';
 
-export const products: ProductsType = [
+export const products: ProductInputType[] = [
   {
     name: 'Puma Ultra Warm Zip',
     category: 't-shirt',
