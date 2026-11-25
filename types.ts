@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import { z } from 'zod';
+import { Types } from 'mongoose';
 
 export type ProductInputType = {
   name: string;
@@ -175,3 +176,38 @@ export type OrderFoo = {
 export type OrderFooTypes = OrderFoo[];
 
 //___________________________
+
+//_______AdminOrder__________
+
+type OrderItemType = {
+  _id: string;
+  productId: Types.ObjectId;
+  name: string;
+  image: string;
+  price: number;
+  selectedColor: string;
+  selectedSize: string;
+  quantity: number;
+};
+
+type ShippingAddressType = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+};
+
+type OrderType = {
+  _id: string;
+  orderId: string;
+  items: OrderItemType[];
+  shippingAddress: ShippingAddressType;
+  total: number;
+  paymentStatus: 'paid' | 'pending' | 'failed';
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+};
+
+export type OrdersType = OrderType[];
