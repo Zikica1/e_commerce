@@ -79,7 +79,7 @@ export const loginUser = async (
       },
     },
     process.env.ACCESS_TOKEN_SECRET!,
-    { expiresIn: '15m' },
+    { expiresIn: '1m' },
   );
 
   const refreshToken = jwt.sign(
@@ -105,7 +105,7 @@ export const loginUser = async (
     httpOnly: true,
     secure: true,
     sameSite: 'lax',
-    maxAge: 15 * 60,
+    maxAge: 1 * 60,
   });
 
   revalidatePath('/', 'layout');

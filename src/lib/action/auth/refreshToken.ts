@@ -75,14 +75,14 @@ export const refreshToken = async (): Promise<RefreshResponse> => {
         },
       },
       process.env.ACCESS_TOKEN_SECRET!,
-      { expiresIn: '15m' },
+      { expiresIn: '1m' },
     );
 
     cookieStore.set('accessToken', accessToken, {
       httpOnly: true,
       secure: true,
       sameSite: 'lax',
-      maxAge: 15 * 60,
+      maxAge: 1 * 60,
       path: '/',
     });
 
